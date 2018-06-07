@@ -45,7 +45,13 @@ class METADATA(Structure):
     
 
 #lib = CDLL("/home/pjreddie/documents/darknet/libdarknet.so", RTLD_GLOBAL)
-lib = CDLL("libdarknet.so", RTLD_GLOBAL)
+#yzyan debug
+import os.path
+dll_name = "libdarknet.so"
+dllabspath = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + os.path.sep + dll_name
+print("Load so file from " + dllabspath)
+lib = CDLL(dllabspath)
+#lib = CDLL("libdarknet.so", RTLD_GLOBAL)
 lib.network_width.argtypes = [c_void_p]
 lib.network_width.restype = c_int
 lib.network_height.argtypes = [c_void_p]
