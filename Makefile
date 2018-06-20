@@ -1,5 +1,5 @@
 GPU=1
-CUDNN=0
+CUDNN=1
 OPENCV=1
 OPENMP=1
 DEBUG=0
@@ -12,7 +12,12 @@ ARCH= -gencode arch=compute_30,code=sm_30 \
 
 # This is what I use, uncomment if you know your arch and want to specify
 #ARCH= -gencode arch=compute_52,code=compute_52
-ARCH= -gencode arch=compute_70,code=[sm_70,compute_70]
+
+# GTX 1080, GTX 1070, GTX 1060, GTX 1050, GTX 1030, Titan Xp, Tesla P40, Tesla P4
+ARCH= -gencode arch=compute_61,code=sm_61 -gencode arch=compute_61,code=compute_61
+
+# Tesla V100
+#ARCH= -gencode arch=compute_70,code=[sm_70,compute_70]
 
 VPATH=./src/:./examples
 SLIB=libdarknet.so
